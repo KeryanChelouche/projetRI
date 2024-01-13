@@ -24,8 +24,6 @@ Nous utilisons un modèle Learning to Rank basé sur BERT.
 
 ![Modèle L2R](images/modeleL2R.PNG)
 
-
-
 ## Negative Sampling
 Nous utilisons deux méthodes différentes de Negative Sampling : C'est à dire la méthode avec laquelle nous choisissons pour une requête les documents **non pertinents** associé lors de l'entrainement.  
 
@@ -55,14 +53,21 @@ Nous testons une variante supplémentaire de ces deux méthodes **T-LS** et **T-
 
 1. Pour chaque requête, on classe les documents en fonction de leur score de pertinence
 2. On calcule la position moyenne du documents pertinent dans l'ensemble des documents associé à la requête
-3. Le score final est **10 - Avg_pos**
+3. Le score final est **10 - Avg_pos**. Cela permet qu'un score élevé soit meilleur. 
 
-[Illustration métrique d'evaluation](images/metrique.PNG) 
+![Illustration métrique d'evaluation](images/metrique.PNG) 
 ## Résultats et Analyse
+- nombre d'epoch = 20
+- learning rate = 1e-5
+- 50 requêtes (pour un total de 500 triplet)
 
-[Inclure un résumé des résultats clés et des analyses pertinentes]
-Conclusion
+Voyons si même dans ces conditions très limité, nous reussissons à reproduire les résultats de l'article : 
 
-[Conclusion sur l'efficacité du lissage des étiquettes et comparaison entre WSLS et LS]
-Installation
+![Résultats](images/resultats.PNG) 
+
+Nous sommes donc maintenant capable de répondre aux questions : 
+
+**RQ1 :** LS est un régularisateur efficace améliorant les performances mais uniquement si l'on utilise NS_BM25 (4.07 contre 3.75). Dans tout les cas, la variante T-LS est meilleure (4.69).
+
+**RQ2 :** WSLS surpasse LS avec NS_BM25 (4.23 contre 4.07). Sa variante T-WSLS surpasse à la fois WSLS mais aussi T-LS (4.90 contre 4.69). 
 
