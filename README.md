@@ -43,7 +43,7 @@ Nous testons une variante supplémentaire de ces deux méthodes **T-LS** et **T-
 
 ## Protocole d'Évaluation
 
-1. Collection des données libre accès -> MS-MARCO-Hard-Negatives.jsonl
+1. Collection des données libre accès -> [MS-MARCO-Hard-Negatives.jsonl](https://huggingface.co/datasets/sentence-transformers/msmarco-hard-negatives)
 2. A partir des données, génération de triplets (qid, pid, relevance) en fonction du Negative Sampling
 3. Pour chaque requête on considère 1 triplet pertinent et 9 non-pertinents
 4. Apprentissage du modèle L2R et Lissage d'étiquettes selon le choix : LS, T-LS, WSLS, T-WSLS
